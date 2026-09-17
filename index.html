@@ -1,0 +1,1696 @@
+<title>AHHA VOLLEYBALL LINEUP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    color-scheme: dark;
+    --ground: #1e2c52;
+    --ground-2: #223261;
+    --surface: #263668;
+    --surface-2: #2e4076;
+    --surface-3: #384c85;
+    --ink: #f5f7fb;
+    --ink-2: #b8c4de;
+    --ink-3: #8393b8;
+    --line: #3a4776;
+    --line-strong: #4d5f95;
+    --court: #e6a338;
+    --court-line: #ffffff;
+    --court-line-dim: rgba(255,255,255,0.55);
+    --net: #f5f7fb;
+    --accent: #7bc1ff;
+    --accent-2: #5aa5ea;
+    --accent-warm: #ffd166;
+    --slot-empty-bg: rgba(255,255,255,0.16);
+    --slot-empty-border: rgba(255,255,255,0.7);
+    --role-s: #6a95ff;
+    --role-sp: #b489f5;
+    --role-a: #ff8590;
+    --role-d: #6ad4b3;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 10px 28px rgba(0,0,0,0.28);
+    --shadow-lg: 0 20px 48px rgba(0,0,0,0.42);
+    --dot: rgba(148, 200, 255, 0.13);
+    --on-accent: var(--ground);
+    --radius: 12px;
+  }
+
+  /* Women's theme: bright sky blue */
+  body[data-active-team="women"] {
+    --ground: #bfe0f0;
+    --ground-2: #a7d3e8;
+    --surface: #ffffff;
+    --surface-2: #ecf5fb;
+    --surface-3: #d7e8f2;
+    --ink: #143852;
+    --ink-2: #45657f;
+    --ink-3: #7e97ac;
+    --line: #bcd5e4;
+    --line-strong: #92b6cc;
+    --net: #143852;
+    --accent: #2c8ac4;
+    --accent-2: #1e6b9d;
+    --slot-empty-bg: rgba(255,255,255,0.32);
+    --slot-empty-border: rgba(255,255,255,0.85);
+    --role-s: #3d5cc9;
+    --role-sp: #7d3fb8;
+    --role-a: #c94848;
+    --role-d: #2a8a75;
+    --shadow-sm: 0 1px 2px rgba(20, 60, 100, 0.08);
+    --shadow-md: 0 10px 28px rgba(20, 60, 100, 0.15);
+    --shadow-lg: 0 20px 48px rgba(20, 60, 100, 0.22);
+    --dot: rgba(45, 105, 145, 0.28);
+    --on-accent: #ffffff;
+  }
+
+  body {
+    background-color: var(--ground);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Malgun Gothic', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+    padding: 32px 24px;
+    background-image:
+      radial-gradient(ellipse 55% 45% at 22% 12%, rgba(123, 193, 255, 0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 88% 92%, rgba(230, 163, 56, 0.08) 0%, transparent 62%),
+      radial-gradient(circle, var(--dot) 1.5px, transparent 2.2px);
+    background-size: auto, auto, 15px 15px;
+    background-attachment: fixed;
+    transition: background-color 0.3s ease;
+  }
+
+  body[data-active-team="women"] {
+    background-image:
+      radial-gradient(ellipse 65% 50% at 18% 8%, rgba(255, 255, 255, 0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 92% 95%, rgba(178, 220, 238, 0.5) 0%, transparent 62%),
+      radial-gradient(circle, var(--dot) 2px, transparent 2.8px);
+    background-size: auto, auto, 18px 18px;
+  }
+
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Team switcher */
+  .team-switch-bar {
+    position: sticky;
+    top: 12px;
+    z-index: 90;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;
+    margin-bottom: 4px;
+  }
+
+  .team-switch {
+    pointer-events: auto;
+    display: inline-flex;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+    padding: 4px;
+    gap: 2px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .switch-btn {
+    border: none;
+    background: transparent;
+    color: var(--ink-2);
+    padding: 8px 22px;
+    border-radius: 100px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    min-width: 84px;
+    text-transform: uppercase;
+  }
+
+  .switch-btn:hover:not(.active) {
+    color: var(--ink);
+    background: var(--surface-2);
+  }
+
+  .switch-btn.active {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  body[data-active-team="men"] .team-women { display: none; }
+  body[data-active-team="women"] .team-men { display: none; }
+
+  .team-header {
+    text-align: center;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .season {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-family: 'Barlow Condensed', 'Impact', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 8vw, 80px);
+    line-height: 0.92;
+    letter-spacing: 0.015em;
+    text-wrap: balance;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  h1 .script {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 0.55em;
+    color: var(--accent);
+    text-transform: lowercase;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    transform: rotate(-4deg);
+    display: inline-block;
+    margin-left: 4px;
+    padding-bottom: 0.15em;
+    text-shadow: 2px 2px 0 rgba(106, 183, 255, 0.2);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .layout { grid-template-columns: 1fr; }
+    body { padding: 22px 16px; }
+  }
+
+  /* Court */
+  .court-wrap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 26px 26px 30px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .net-line {
+    position: relative;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+
+  .net-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--net) 0 8px, transparent 8px 12px);
+    transform: translateY(-50%);
+    opacity: 0.55;
+  }
+
+  .net-line span {
+    position: relative;
+    background: var(--surface);
+    padding: 0 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.44em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .court {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 34px 22px;
+    gap: 18px 6px;
+    background: var(--court);
+    border: 5px solid var(--court-line);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+
+  .slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 6px;
+    border-radius: 14px;
+    background: var(--slot-empty-bg);
+    border: 2px dashed var(--slot-empty-border);
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s;
+    position: relative;
+    min-width: 0;
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .slot.filled {
+    background: var(--surface);
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--role-color, var(--ink));
+    box-shadow: var(--shadow-md);
+    backdrop-filter: none;
+  }
+
+  .slot.drag-over {
+    transform: scale(1.06);
+    background: var(--surface);
+    border-color: var(--accent);
+    border-style: solid;
+    border-width: 3px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .slot.awaiting {
+    box-shadow: 0 0 0 3px var(--accent), var(--shadow-sm);
+  }
+
+  .pos-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(13px, 1.9vw, 17px);
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.96);
+    line-height: 1;
+  }
+
+  .slot.filled .pos-label {
+    color: var(--role-color);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    opacity: 0.95;
+  }
+
+  .slot-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 3.8vw, 34px);
+    color: var(--ink);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .slot-name {
+    font-size: 11px;
+    color: var(--ink-2);
+    margin-top: 3px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  [data-pos="속공"]     { grid-column: 7 / 13;  grid-row: 1; }
+  [data-pos="세터"]     { grid-column: 13 / 19; grid-row: 1; }
+  [data-pos="레프트"]   { grid-column: 1 / 7;   grid-row: 2; }
+  [data-pos="앞차"]     { grid-column: 7 / 13;  grid-row: 2; }
+  [data-pos="백차"]     { grid-column: 13 / 19; grid-row: 2; }
+  [data-pos="라이트"]   { grid-column: 19 / 25; grid-row: 2; }
+  [data-pos="레프트백"] { grid-column: 4 / 10;  grid-row: 3; }
+  [data-pos="센터백"]   { grid-column: 10 / 16; grid-row: 3; }
+  [data-pos="라이트백"] { grid-column: 16 / 22; grid-row: 3; }
+
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-head {
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    gap: 12px;
+  }
+
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .roster-wrap {
+    padding: 12px 12px 14px;
+  }
+
+  .roster {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    max-height: 620px;
+    overflow-y: auto;
+    padding: 2px 6px 2px 2px;
+  }
+
+  .roster::-webkit-scrollbar { width: 6px; }
+  .roster::-webkit-scrollbar-track { background: transparent; }
+  .roster::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+
+  .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 6px 10px;
+    background:
+      linear-gradient(122deg, transparent 22%, rgba(106,183,255,0.08) 34%, transparent 46%),
+      linear-gradient(122deg, transparent 58%, rgba(106,183,255,0.05) 66%, transparent 74%),
+      var(--surface-2);
+    border: 1px solid var(--line);
+    border-bottom: 3px solid var(--role-color);
+    border-radius: 8px;
+    cursor: grab;
+    transition: transform 0.12s, box-shadow 0.12s, opacity 0.12s, background 0.12s, border-color 0.12s;
+    user-select: none;
+    position: relative;
+    min-height: 74px;
+    text-align: center;
+  }
+
+  .player:hover:not(.on-court) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+    background:
+      linear-gradient(122deg, transparent 22%, rgba(106,183,255,0.14) 34%, transparent 46%),
+      linear-gradient(122deg, transparent 58%, rgba(106,183,255,0.08) 66%, transparent 74%),
+      var(--surface-3);
+  }
+
+  .player:active:not(.on-court) { cursor: grabbing; }
+  .player.dragging { opacity: 0.35; }
+  .player.selected {
+    box-shadow: 0 0 0 2px var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .player.on-court {
+    opacity: 0.28;
+    cursor: not-allowed;
+    filter: saturate(0.35);
+  }
+
+  .player-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 5px;
+  }
+
+  .player-name {
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* Controls */
+  .controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 14px 16px 16px;
+  }
+
+  button {
+    font: inherit;
+    font-size: 13px;
+    padding: 11px 12px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--ink);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s, transform 0.08s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 500;
+  }
+
+  button:hover:not(:disabled) {
+    background: var(--surface-3);
+    border-color: var(--accent);
+  }
+
+  button:active:not(:disabled) { transform: translateY(1px); }
+
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  button.primary {
+    background: var(--accent);
+    color: var(--on-accent);
+    border-color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  button.primary:hover:not(:disabled) {
+    background: var(--accent-2);
+    border-color: var(--accent-2);
+  }
+
+  button.full { grid-column: 1 / -1; }
+
+  .storage-note {
+    padding: 0 16px 14px;
+    font-size: 11px;
+    color: var(--ink-3);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .storage-note .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .storage-note.saved {
+    color: var(--ink-2);
+  }
+
+  /* Tournament dropdown */
+  .tournament-select {
+    position: relative;
+    flex: 1;
+  }
+  .tournament-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 6px;
+    font: inherit;
+    width: 100%;
+    text-align: left;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .tournament-btn:hover { background: var(--surface-2); border-color: var(--line); }
+  .tournament-btn.open { background: var(--surface-2); border-color: var(--line-strong); }
+  .tournament-btn .card-title { flex-shrink: 0; }
+  .tournament-btn .tournament-name {
+    font-size: 13px;
+    color: var(--ink-2);
+    font-weight: 500;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .tournament-btn .tournament-count {
+    color: var(--accent);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+  }
+  .tournament-btn .chevron {
+    color: var(--ink-3);
+    font-size: 11px;
+    transition: transform 0.15s;
+  }
+  .tournament-btn.open .chevron { transform: rotate(180deg); }
+
+  .tournament-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    min-width: 260px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    padding: 6px;
+    z-index: 50;
+    max-height: 360px;
+    overflow-y: auto;
+  }
+
+  .tournament-option-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .tournament-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: left;
+    transition: background 0.1s;
+    font: inherit;
+    width: 100%;
+  }
+  .tournament-option:hover { background: var(--surface-2); }
+  .tournament-option.active {
+    background: var(--surface-3);
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+  .tournament-option .opt-main {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .tournament-option .opt-meta {
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.02em;
+  }
+
+  .tournament-edit {
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    color: var(--ink-3);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: background 0.1s, color 0.1s;
+    flex-shrink: 0;
+  }
+  .tournament-edit:hover { background: var(--surface-2); color: var(--accent); }
+
+  .tournament-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 5px 6px;
+  }
+
+  .add-tournament-btn {
+    width: 100%;
+    padding: 9px 12px;
+    background: transparent;
+    border: 1px dashed var(--line-strong);
+    color: var(--accent);
+    cursor: pointer;
+    border-radius: 5px;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background 0.1s, border-color 0.1s;
+  }
+  .add-tournament-btn:hover { background: var(--surface-2); border-color: var(--accent); }
+  .add-tournament-btn .plus {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .roster-empty {
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--ink-3);
+    font-size: 12px;
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    margin: 6px 2px;
+  }
+
+  /* Modal */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 19, 48, 0.72);
+    backdrop-filter: blur(4px);
+  }
+  .modal-content {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .modal-head {
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    gap: 10px;
+  }
+  .modal-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .modal-head .modal-team-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background: var(--accent);
+    color: var(--on-accent);
+    text-transform: uppercase;
+  }
+  .modal-close {
+    padding: 4px 10px;
+    background: transparent;
+    border: none;
+    color: var(--ink-2);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    border-radius: 4px;
+    margin-left: auto;
+  }
+  .modal-close:hover { color: var(--ink); background: var(--surface-2); }
+
+  .modal-body {
+    padding: 20px 22px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .field-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--ink-2);
+    text-transform: uppercase;
+  }
+  .field input[type="text"],
+  .field input[type="date"] {
+    padding: 10px 12px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface-2);
+    color: var(--ink);
+    border-radius: 6px;
+    font: inherit;
+    font-size: 14px;
+    color-scheme: dark;
+  }
+  body[data-active-team="women"] .field input {
+    color-scheme: light;
+  }
+  .field input[type="text"]:focus,
+  .field input[type="date"]:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+
+  .form-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .form-hint {
+    display: flex;
+    gap: 4px;
+  }
+  .link-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font: inherit;
+  }
+  .link-btn:hover { background: var(--surface-2); }
+
+  .player-check-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .player-check-list::-webkit-scrollbar { width: 6px; }
+  .player-check-list::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 3px; }
+
+  .player-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 9px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--role-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .player-check:hover { background: var(--surface-3); }
+  .player-check input {
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--accent);
+  }
+  .player-check .chk-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    min-width: 22px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .player-check .chk-name {
+    flex: 1;
+    font-size: 12px;
+    color: var(--ink);
+  }
+
+  .modal-foot {
+    padding: 14px 22px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .modal-foot .spacer { flex: 1; }
+  .modal-foot button.danger {
+    background: transparent;
+    color: var(--role-a);
+    border-color: rgba(255, 133, 144, 0.4);
+  }
+  .modal-foot button.danger:hover {
+    background: rgba(255, 133, 144, 0.12);
+    border-color: var(--role-a);
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--on-accent);
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 100;
+    letter-spacing: 0.02em;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+  @media (max-width: 640px) {
+    .court {
+      aspect-ratio: 4 / 3.2;
+      padding: 22px 12px;
+      gap: 12px 4px;
+    }
+    .slot { padding: 4px; }
+    .pos-label { font-size: 12px; }
+    .slot-num { font-size: 20px; }
+    .slot-name { font-size: 9px; }
+    h1 { font-size: 42px; }
+    .team-header { padding-bottom: 16px; margin-bottom: 16px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="page">
+  <div class="team-switch-bar">
+    <div class="team-switch" role="tablist" aria-label="팀 선택">
+      <button class="switch-btn active" data-team-target="men" role="tab" aria-selected="true">MEN</button>
+      <button class="switch-btn" data-team-target="women" role="tab" aria-selected="false">WOMEN</button>
+    </div>
+  </div>
+
+  <!-- MEN'S TEAM -->
+  <section class="team team-men" data-team="men">
+    <header class="team-header">
+      <div class="season">2026-2027 AHHA MEN'S VOLLEYBALL</div>
+      <h1>SQUAD <span class="script">lineup</span></h1>
+    </header>
+
+    <div class="layout">
+      <div class="court-wrap">
+        <div class="net-line"><span>NET</span></div>
+        <div class="court">
+          <div class="slot" data-pos="속공"></div>
+          <div class="slot" data-pos="세터"></div>
+          <div class="slot" data-pos="레프트"></div>
+          <div class="slot" data-pos="앞차"></div>
+          <div class="slot" data-pos="백차"></div>
+          <div class="slot" data-pos="라이트"></div>
+          <div class="slot" data-pos="레프트백"></div>
+          <div class="slot" data-pos="센터백"></div>
+          <div class="slot" data-pos="라이트백"></div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="card">
+          <div class="card-head">
+            <div class="tournament-select">
+              <button class="tournament-btn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="card-title">Squad</span>
+                <span class="tournament-name">전체 선수</span>
+                <span class="tournament-count">0</span>
+                <span class="chevron" aria-hidden="true">▾</span>
+              </button>
+              <div class="tournament-menu" hidden role="listbox"></div>
+            </div>
+          </div>
+          <div class="roster-wrap">
+            <div class="roster"></div>
+            <div class="roster-empty" hidden>참가 선수가 없습니다.</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="controls">
+            <button class="primary full load-btn">기본 배치 불러오기</button>
+            <button class="save-btn">기본으로 저장</button>
+            <button class="clear-btn">전체 해제</button>
+          </div>
+          <div class="storage-note"></div>
+        </section>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WOMEN'S TEAM -->
+  <section class="team team-women" data-team="women">
+    <header class="team-header">
+      <div class="season">2026-2027 AHHA WOMEN'S VOLLEYBALL</div>
+      <h1>SQUAD <span class="script">lineup</span></h1>
+    </header>
+
+    <div class="layout">
+      <div class="court-wrap">
+        <div class="net-line"><span>NET</span></div>
+        <div class="court">
+          <div class="slot" data-pos="속공"></div>
+          <div class="slot" data-pos="세터"></div>
+          <div class="slot" data-pos="레프트"></div>
+          <div class="slot" data-pos="앞차"></div>
+          <div class="slot" data-pos="백차"></div>
+          <div class="slot" data-pos="라이트"></div>
+          <div class="slot" data-pos="레프트백"></div>
+          <div class="slot" data-pos="센터백"></div>
+          <div class="slot" data-pos="라이트백"></div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <section class="card">
+          <div class="card-head">
+            <div class="tournament-select">
+              <button class="tournament-btn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="card-title">Squad</span>
+                <span class="tournament-name">전체 선수</span>
+                <span class="tournament-count">0</span>
+                <span class="chevron" aria-hidden="true">▾</span>
+              </button>
+              <div class="tournament-menu" hidden role="listbox"></div>
+            </div>
+          </div>
+          <div class="roster-wrap">
+            <div class="roster"></div>
+            <div class="roster-empty" hidden>참가 선수가 없습니다.</div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="controls">
+            <button class="primary full load-btn">기본 배치 불러오기</button>
+            <button class="save-btn">기본으로 저장</button>
+            <button class="clear-btn">전체 해제</button>
+          </div>
+          <div class="storage-note"></div>
+        </section>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<!-- Shared modal -->
+<div class="modal" id="tournamentModal" hidden>
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h2 id="modalTitle">대회 추가</h2>
+      <span class="modal-team-tag" id="modalTeamTag">MEN</span>
+      <button class="modal-close" id="modalClose" aria-label="닫기">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="field">
+        <span class="field-label">대회 이름</span>
+        <input type="text" id="tName" placeholder="예: 2026 춘계 아마추어 리그" maxlength="60">
+      </div>
+      <div class="field">
+        <span class="field-label">일정</span>
+        <input type="date" id="tDate">
+      </div>
+      <div class="field">
+        <div class="form-section-head">
+          <span class="field-label">참가 선수 <span id="tCount" style="color:var(--accent); margin-left:4px;">0</span></span>
+          <div class="form-hint">
+            <button type="button" class="link-btn" id="selectAllBtn">전체 선택</button>
+            <button type="button" class="link-btn" id="selectNoneBtn">전체 해제</button>
+          </div>
+        </div>
+        <div class="player-check-list" id="playerCheckList"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="danger" id="deleteTBtn" hidden>대회 삭제</button>
+      <div class="spacer"></div>
+      <button id="cancelTBtn">취소</button>
+      <button class="primary" id="saveTBtn">저장</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const ROLES = {
+    S:  { name: '세터', color: '#6a95ff' },
+    SP: { name: '속공', color: '#b489f5' },
+    A:  { name: '공격', color: '#ff8590' },
+    D:  { name: '수비', color: '#6ad4b3' },
+  };
+
+  const POSITIONS = ['속공','세터','레프트','앞차','백차','라이트','레프트백','센터백','라이트백'];
+
+  const mensPlayers = [
+    { id: 'm1',  num: 1,  name: '박준이', role: 'S',  pref: '세터'    },
+    { id: 'm2',  num: 2,  name: '김민상', role: 'D',  pref: '레프트백' },
+    { id: 'm3',  num: 3,  name: '강찬혁', role: 'D',  pref: '센터백'   },
+    { id: 'm4',  num: 4,  name: '신민규', role: 'D',  pref: '라이트백' },
+    { id: 'm5',  num: 5,  name: '신유섭', role: 'A',  pref: '레프트'  },
+    { id: 'm6',  num: 6,  name: '문희수', role: 'SP', pref: '속공'    },
+    { id: 'm7',  num: 7,  name: '이강민', role: 'A',  pref: '라이트'  },
+    { id: 'm8',  num: 8,  name: '오동윤', role: 'S',  pref: '세터'    },
+    { id: 'm9',  num: 9,  name: '김종찬', role: 'A',  pref: '앞차'    },
+    { id: 'm10', num: 10, name: '원지호', role: 'A',  pref: '라이트'  },
+    { id: 'm11', num: 11, name: '한진수', role: 'A',  pref: '레프트'  },
+    { id: 'm12', num: 12, name: '신경록', role: 'A',  pref: '백차'    },
+    { id: 'm13', num: 14, name: '전석훈', role: 'SP', pref: '속공'    },
+    { id: 'm14', num: 15, name: '황정환', role: 'A',  pref: '레프트'  },
+    { id: 'm15', num: 17, name: '조준우', role: 'A',  pref: '라이트'  },
+    { id: 'm16', num: 19, name: '정세현', role: 'A',  pref: '앞차'    },
+    { id: 'm17', num: 23, name: '전인환', role: 'A',  pref: '백차'    },
+    { id: 'm18', num: 24, name: '전민성', role: 'D',  pref: '레프트백' },
+    { id: 'm19', num: 88, name: '조용휘', role: 'D',  pref: '센터백'   },
+  ];
+
+  const womensPlayers = [
+    { id: 'w1',  num: 1,  name: '아카리', role: 'S',  pref: '세터'    },
+    { id: 'w2',  num: 2,  name: '정명은', role: 'D',  pref: '레프트백' },
+    { id: 'w3',  num: 3,  name: '장세연', role: 'D',  pref: '센터백'   },
+    { id: 'w4',  num: 4,  name: '양은영', role: 'D',  pref: '라이트백' },
+    { id: 'w5',  num: 5,  name: '구지인', role: 'A',  pref: '레프트'  },
+    { id: 'w6',  num: 6,  name: '김해빈', role: 'SP', pref: '속공'    },
+    { id: 'w7',  num: 7,  name: '김용은', role: 'A',  pref: '라이트'  },
+    { id: 'w8',  num: 8,  name: '윤채연', role: 'S',  pref: '세터'    },
+    { id: 'w9',  num: 9,  name: '오세인', role: 'A',  pref: '앞차'    },
+    { id: 'w10', num: 10, name: '안효민', role: 'A',  pref: '레프트'  },
+    { id: 'w11', num: 11, name: '박호영', role: 'A',  pref: '백차'    },
+    { id: 'w12', num: 12, name: '나수현', role: 'A',  pref: '라이트'  },
+    { id: 'w13', num: 14, name: '강하성', role: 'SP', pref: '속공'    },
+    { id: 'w14', num: 19, name: '김은지', role: 'A',  pref: '레프트'  },
+    { id: 'w15', num: 22, name: '박예린', role: 'A',  pref: '앞차'    },
+    { id: 'w16', num: 23, name: '김민주', role: 'A',  pref: '라이트'  },
+    { id: 'w17', num: 27, name: '박서영', role: 'D',  pref: '레프트백' },
+    { id: 'w18', num: '00', name: '김해리', role: 'D',  pref: '센터백'   },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  // Shared modal context: which team is being edited
+  let modalContext = null;
+
+  // Toast
+  let toastTimer = null;
+  function toast(msg) {
+    const el = $('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => el.classList.remove('show'), 2000);
+  }
+
+  function closeAllTournamentMenus(exceptBtn) {
+    document.querySelectorAll('.tournament-menu').forEach(m => m.hidden = true);
+    document.querySelectorAll('.tournament-btn.open').forEach(b => {
+      if (b === exceptBtn) return;
+      b.classList.remove('open');
+      b.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function createTeam({ id, root, players, storagePrefix, teamLabel }) {
+    const state = { grid: {}, selectedPlayer: null };
+    POSITIONS.forEach(p => state.grid[p] = null);
+
+    let tournaments = [];
+    let selectedTournamentId = null;
+
+    const TOURN_KEY = `${storagePrefix}-tournaments`;
+    const SEL_KEY = `${storagePrefix}-selected-tournament`;
+    const STORAGE_KEY = `${storagePrefix}-lineup-default`;
+
+    const $q = (sel) => root.querySelector(sel);
+    const $qa = (sel) => root.querySelectorAll(sel);
+
+    const playerBy = (pid) => players.find(p => p.id === pid);
+    const onCourt = (pid) => POSITIONS.some(p => state.grid[p] === pid);
+
+    // ---- Storage ----
+    function loadTournaments() {
+      try {
+        const raw = localStorage.getItem(TOURN_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) {
+            tournaments = parsed.filter(t => t && t.id && t.name).map(t => ({
+              id: String(t.id),
+              name: String(t.name),
+              date: t.date || '',
+              playerIds: Array.isArray(t.playerIds) ? t.playerIds.filter(id => playerBy(id)) : [],
+            }));
+          }
+        }
+      } catch (e) { tournaments = []; }
+      try {
+        const sel = localStorage.getItem(SEL_KEY);
+        if (sel && tournaments.find(t => t.id === sel)) selectedTournamentId = sel;
+        else selectedTournamentId = null;
+      } catch (e) { selectedTournamentId = null; }
+    }
+    function persistTournaments() {
+      try { localStorage.setItem(TOURN_KEY, JSON.stringify(tournaments)); } catch (e) {}
+    }
+    function persistSelected() {
+      try {
+        if (selectedTournamentId) localStorage.setItem(SEL_KEY, selectedTournamentId);
+        else localStorage.removeItem(SEL_KEY);
+      } catch (e) {}
+    }
+    function readSavedDefault() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object') return null;
+        const grid = {};
+        const used = new Set();
+        POSITIONS.forEach(pos => {
+          const pid = parsed.grid ? parsed.grid[pos] : null;
+          if (pid && playerBy(pid) && !used.has(pid)) {
+            grid[pos] = pid;
+            used.add(pid);
+          } else {
+            grid[pos] = null;
+          }
+        });
+        return { grid, savedAt: parsed.savedAt || null };
+      } catch (e) { return null; }
+    }
+
+    // ---- Data ----
+    function getActivePlayers() {
+      if (!selectedTournamentId) return players;
+      const t = tournaments.find(x => x.id === selectedTournamentId);
+      if (!t) return players;
+      const set = new Set(t.playerIds);
+      return players.filter(p => set.has(p.id));
+    }
+    function builtInFill() {
+      POSITIONS.forEach(p => state.grid[p] = null);
+      const used = new Set();
+      POSITIONS.forEach(pos => {
+        const p = players.find(pl => pl.pref === pos && !used.has(pl.id));
+        if (p) { state.grid[pos] = p.id; used.add(p.id); }
+      });
+      state.selectedPlayer = null;
+    }
+
+    // ---- Render ----
+    function renderTournamentButton() {
+      const t = tournaments.find(x => x.id === selectedTournamentId);
+      $q('.tournament-name').textContent = t ? t.name : '전체 선수';
+      $q('.tournament-count').textContent = getActivePlayers().length;
+    }
+    function renderTournamentMenu() {
+      const menu = $q('.tournament-menu');
+      const listItems = tournaments.map(t => `
+        <div class="tournament-option-wrap">
+          <button class="tournament-option ${t.id === selectedTournamentId ? 'active' : ''}" data-tournament-id="${escapeHtml(t.id)}" role="option">
+            <span class="opt-main">${escapeHtml(t.name)}</span>
+            <span class="opt-meta">${escapeHtml(t.date || '일정 미정')} · ${t.playerIds.length}명</span>
+          </button>
+          <button class="tournament-edit" data-edit-id="${escapeHtml(t.id)}" title="편집" aria-label="편집">✎</button>
+        </div>
+      `).join('');
+      menu.innerHTML = `
+        <button class="tournament-option ${!selectedTournamentId ? 'active' : ''}" data-tournament-id="" role="option">
+          <span class="opt-main">전체 선수</span>
+          <span class="opt-meta">등록된 ${players.length}명 전원</span>
+        </button>
+        ${tournaments.length ? '<div class="tournament-divider"></div>' : ''}
+        ${listItems}
+        <div class="tournament-divider"></div>
+        <button class="add-tournament-btn">
+          <span class="plus">+</span> 대회 추가하기
+        </button>
+      `;
+    }
+    function renderRoster() {
+      const roster = $q('.roster');
+      const empty = $q('.roster-empty');
+      roster.innerHTML = '';
+      const active = getActivePlayers();
+      if (active.length === 0) {
+        roster.hidden = true;
+        empty.hidden = false;
+        return;
+      }
+      roster.hidden = false;
+      empty.hidden = true;
+      active.forEach(p => {
+        const role = ROLES[p.role];
+        const isOn = onCourt(p.id);
+        const el = document.createElement('div');
+        el.className = 'player' + (isOn ? ' on-court' : '') + (state.selectedPlayer === p.id ? ' selected' : '');
+        el.setAttribute('draggable', isOn ? 'false' : 'true');
+        el.dataset.playerId = p.id;
+        el.title = `${p.name} · ${p.pref}`;
+        el.style.setProperty('--role-color', role.color);
+        el.innerHTML = `
+          <div class="player-num">${p.num}</div>
+          <div class="player-name">${p.name}</div>
+        `;
+        roster.appendChild(el);
+      });
+    }
+    function renderCourt() {
+      POSITIONS.forEach(pos => {
+        const slot = $q(`.slot[data-pos="${pos}"]`);
+        if (!slot) return;
+        slot.className = 'slot';
+        slot.dataset.pos = pos;
+        const pid = state.grid[pos];
+        if (pid) {
+          const p = playerBy(pid);
+          const role = ROLES[p.role];
+          slot.classList.add('filled');
+          slot.style.setProperty('--role-color', role.color);
+          slot.title = `${pos} · ${p.name} (#${p.num}) · 클릭하여 해제`;
+          slot.innerHTML = `
+            <span class="pos-label">${pos}</span>
+            <span class="slot-num">${p.num}</span>
+            <span class="slot-name">${p.name}</span>
+          `;
+        } else {
+          slot.style.removeProperty('--role-color');
+          if (state.selectedPlayer) slot.classList.add('awaiting');
+          slot.title = `${pos} · 선수를 드래그하거나 선택 후 클릭`;
+          slot.innerHTML = `<span class="pos-label">${pos}</span>`;
+        }
+      });
+    }
+    function renderStorageNote() {
+      const el = $q('.storage-note');
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.savedAt) {
+            const d = new Date(parsed.savedAt);
+            const stamp = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+            el.className = 'storage-note saved';
+            el.innerHTML = `<span class="dot"></span>기본 배치 저장됨 · ${stamp}`;
+            return;
+          }
+        }
+      } catch (e) {}
+      el.className = 'storage-note';
+      el.textContent = '저장된 기본 배치 없음 · 초기값 사용';
+    }
+    function renderAll() {
+      renderTournamentButton();
+      renderTournamentMenu();
+      renderRoster();
+      renderCourt();
+      renderStorageNote();
+    }
+
+    // ---- Actions ----
+    function placePlayer(pid, pos) {
+      POSITIONS.forEach(p => { if (state.grid[p] === pid) state.grid[p] = null; });
+      state.grid[pos] = pid;
+      renderRoster();
+      renderCourt();
+    }
+    function removeFromPosition(pos) {
+      state.grid[pos] = null;
+      renderRoster();
+      renderCourt();
+    }
+    function togglePlayerSelect(pid) {
+      state.selectedPlayer = state.selectedPlayer === pid ? null : pid;
+      renderRoster();
+      renderCourt();
+      if (state.selectedPlayer) toast(`${playerBy(pid).name} 선택 · 포지션 클릭`);
+    }
+    function selectTournament(tid) {
+      selectedTournamentId = tid || null;
+      persistSelected();
+      state.selectedPlayer = null;
+      renderTournamentButton();
+      renderTournamentMenu();
+      renderRoster();
+      renderCourt();
+    }
+    function openMenu() {
+      const btn = $q('.tournament-btn');
+      const menu = $q('.tournament-menu');
+      closeAllTournamentMenus(btn);
+      menu.hidden = false;
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      $q('.tournament-menu').hidden = true;
+      $q('.tournament-btn').classList.remove('open');
+      $q('.tournament-btn').setAttribute('aria-expanded', 'false');
+    }
+    function loadDefault() {
+      const saved = readSavedDefault();
+      if (saved) {
+        POSITIONS.forEach(p => state.grid[p] = saved.grid[p]);
+        state.selectedPlayer = null;
+        renderRoster();
+        renderCourt();
+        toast('저장된 기본 배치를 불러왔습니다');
+      } else {
+        builtInFill();
+        renderRoster();
+        renderCourt();
+        toast('저장된 배치가 없어 초기값을 적용했습니다');
+      }
+    }
+    function saveDefault() {
+      try {
+        const payload = { grid: { ...state.grid }, savedAt: new Date().toISOString() };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        toast('현재 배치를 기본으로 저장했습니다');
+        renderStorageNote();
+      } catch (e) { toast('저장에 실패했습니다'); }
+    }
+    function clearCourt() {
+      POSITIONS.forEach(p => state.grid[p] = null);
+      state.selectedPlayer = null;
+      renderRoster();
+      renderCourt();
+      toast('전체 해제');
+    }
+
+    // ---- Tournament CRUD (called from shared modal) ----
+    function addTournament(t) {
+      tournaments.push(t);
+      selectedTournamentId = t.id;
+      persistTournaments();
+      persistSelected();
+      renderTournamentButton();
+      renderTournamentMenu();
+      renderRoster();
+    }
+    function updateTournamentById(tid, patch) {
+      const idx = tournaments.findIndex(x => x.id === tid);
+      if (idx >= 0) tournaments[idx] = { ...tournaments[idx], ...patch, id: tid };
+      persistTournaments();
+      renderTournamentButton();
+      renderTournamentMenu();
+      renderRoster();
+    }
+    function deleteTournamentById(tid) {
+      tournaments = tournaments.filter(x => x.id !== tid);
+      if (selectedTournamentId === tid) selectedTournamentId = null;
+      persistTournaments();
+      persistSelected();
+      renderTournamentButton();
+      renderTournamentMenu();
+      renderRoster();
+    }
+
+    // ---- Event delegation ----
+    const roster = $q('.roster');
+    roster.addEventListener('click', (e) => {
+      const player = e.target.closest('.player');
+      if (!player || player.classList.contains('on-court')) return;
+      togglePlayerSelect(player.dataset.playerId);
+    });
+    roster.addEventListener('dragstart', (e) => {
+      const player = e.target.closest('.player');
+      if (!player || player.classList.contains('on-court')) { e.preventDefault(); return; }
+      e.dataTransfer.setData('text/plain', player.dataset.playerId);
+      e.dataTransfer.effectAllowed = 'move';
+      player.classList.add('dragging');
+    });
+    roster.addEventListener('dragend', (e) => {
+      const player = e.target.closest('.player');
+      if (player) player.classList.remove('dragging');
+    });
+
+    const court = $q('.court');
+    court.addEventListener('click', (e) => {
+      const slot = e.target.closest('.slot');
+      if (!slot) return;
+      const pos = slot.dataset.pos;
+      if (state.grid[pos]) {
+        removeFromPosition(pos);
+      } else if (state.selectedPlayer) {
+        placePlayer(state.selectedPlayer, pos);
+        state.selectedPlayer = null;
+      }
+    });
+    court.addEventListener('dragover', (e) => {
+      const slot = e.target.closest('.slot');
+      if (!slot) return;
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      slot.classList.add('drag-over');
+    });
+    court.addEventListener('dragleave', (e) => {
+      const slot = e.target.closest('.slot');
+      if (!slot) return;
+      if (!slot.contains(e.relatedTarget)) slot.classList.remove('drag-over');
+    });
+    court.addEventListener('drop', (e) => {
+      const slot = e.target.closest('.slot');
+      if (!slot) return;
+      e.preventDefault();
+      slot.classList.remove('drag-over');
+      const pid = e.dataTransfer.getData('text/plain');
+      if (pid && players.find(p => p.id === pid)) placePlayer(pid, slot.dataset.pos);
+    });
+
+    const tournamentBtn = $q('.tournament-btn');
+    const tournamentMenu = $q('.tournament-menu');
+    tournamentBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (tournamentMenu.hidden) openMenu(); else closeMenu();
+    });
+    tournamentMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const editBtn = e.target.closest('.tournament-edit');
+      if (editBtn) {
+        const t = tournaments.find(x => x.id === editBtn.dataset.editId);
+        if (t) { closeMenu(); openTournamentModal(self, t); }
+        return;
+      }
+      const addBtn = e.target.closest('.add-tournament-btn');
+      if (addBtn) { closeMenu(); openTournamentModal(self, null); return; }
+      const opt = e.target.closest('.tournament-option');
+      if (opt) { selectTournament(opt.dataset.tournamentId); closeMenu(); }
+    });
+
+    $q('.load-btn').addEventListener('click', loadDefault);
+    $q('.save-btn').addEventListener('click', saveDefault);
+    $q('.clear-btn').addEventListener('click', clearCourt);
+
+    // ---- Init ----
+    loadTournaments();
+    const initial = readSavedDefault();
+    if (initial) {
+      POSITIONS.forEach(p => state.grid[p] = initial.grid[p]);
+    } else {
+      builtInFill();
+    }
+
+    const self = {
+      id, root, players, teamLabel,
+      get tournaments() { return tournaments; },
+      addTournament,
+      updateTournamentById,
+      deleteTournamentById,
+      renderAll,
+      closeMenu,
+    };
+    return self;
+  }
+
+  // ---- Shared modal ----
+  function openTournamentModal(team, existing) {
+    modalContext = {
+      team,
+      editing: existing
+        ? { id: existing.id, name: existing.name, date: existing.date, playerIds: [...existing.playerIds] }
+        : { id: null, name: '', date: '', playerIds: team.players.map(p => p.id) },
+    };
+    $('modalTitle').textContent = existing ? '대회 편집' : '대회 추가';
+    $('modalTeamTag').textContent = team.teamLabel;
+    $('tournamentModal').setAttribute('data-team', team.id);
+    $('tName').value = modalContext.editing.name;
+    $('tDate').value = modalContext.editing.date;
+    $('deleteTBtn').hidden = !existing;
+    renderModalPlayerList();
+    $('tournamentModal').hidden = false;
+    setTimeout(() => $('tName').focus(), 0);
+  }
+  function closeTournamentModal() {
+    $('tournamentModal').hidden = true;
+    modalContext = null;
+  }
+  function renderModalPlayerList() {
+    const list = $('playerCheckList');
+    const { editing, team } = modalContext;
+    const checked = new Set(editing.playerIds);
+    list.innerHTML = team.players.map(p => {
+      const role = ROLES[p.role];
+      return `
+        <label class="player-check" style="--role-color:${role.color}">
+          <input type="checkbox" data-player-id="${escapeHtml(p.id)}" ${checked.has(p.id) ? 'checked' : ''}>
+          <span class="chk-num">${p.num}</span>
+          <span class="chk-name">${escapeHtml(p.name)}</span>
+        </label>
+      `;
+    }).join('');
+    $('tCount').textContent = editing.playerIds.length;
+  }
+  function saveTournamentFromModal() {
+    if (!modalContext) return;
+    const { team, editing } = modalContext;
+    const name = $('tName').value.trim();
+    const date = $('tDate').value;
+    if (!name) { toast('대회 이름을 입력하세요'); $('tName').focus(); return; }
+    const playerIds = Array.from($('playerCheckList').querySelectorAll('input:checked')).map(cb => cb.dataset.playerId);
+
+    if (editing.id) {
+      team.updateTournamentById(editing.id, { name, date, playerIds });
+    } else {
+      const id = 't_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+      team.addTournament({ id, name, date, playerIds });
+    }
+    closeTournamentModal();
+    toast('저장되었습니다');
+  }
+  function deleteTournamentFromModal() {
+    if (!modalContext || !modalContext.editing.id) return;
+    if (!confirm(`"${modalContext.editing.name}" 대회를 삭제하시겠습니까?`)) return;
+    modalContext.team.deleteTournamentById(modalContext.editing.id);
+    closeTournamentModal();
+    toast('대회가 삭제되었습니다');
+  }
+
+  $('modalClose').addEventListener('click', closeTournamentModal);
+  $('cancelTBtn').addEventListener('click', closeTournamentModal);
+  $('saveTBtn').addEventListener('click', saveTournamentFromModal);
+  $('deleteTBtn').addEventListener('click', deleteTournamentFromModal);
+  $('modalBackdrop').addEventListener('click', closeTournamentModal);
+  $('selectAllBtn').addEventListener('click', () => {
+    if (!modalContext) return;
+    modalContext.editing.playerIds = modalContext.team.players.map(p => p.id);
+    renderModalPlayerList();
+  });
+  $('selectNoneBtn').addEventListener('click', () => {
+    if (!modalContext) return;
+    modalContext.editing.playerIds = [];
+    renderModalPlayerList();
+  });
+  $('playerCheckList').addEventListener('change', (e) => {
+    if (!modalContext) return;
+    const cb = e.target.closest('input[type="checkbox"]');
+    if (!cb) return;
+    const id = cb.dataset.playerId;
+    const set = new Set(modalContext.editing.playerIds);
+    if (cb.checked) set.add(id); else set.delete(id);
+    modalContext.editing.playerIds = Array.from(set);
+    $('tCount').textContent = modalContext.editing.playerIds.length;
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.tournament-select')) closeAllTournamentMenus();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (!$('tournamentModal').hidden) { closeTournamentModal(); return; }
+      closeAllTournamentMenus();
+    }
+  });
+
+  // ---- Init teams ----
+  const menTeam = createTeam({
+    id: 'men',
+    teamLabel: "MEN'S",
+    root: document.querySelector('[data-team="men"]'),
+    players: mensPlayers,
+    storagePrefix: 'ahha-9man',
+  });
+  const womenTeam = createTeam({
+    id: 'women',
+    teamLabel: "WOMEN'S",
+    root: document.querySelector('[data-team="women"]'),
+    players: womensPlayers,
+    storagePrefix: 'ahha-9women',
+  });
+
+  menTeam.renderAll();
+  womenTeam.renderAll();
+
+  // ---- Team switcher ----
+  const TEAM_KEY = 'ahha-active-team';
+  function setActiveTeam(teamId) {
+    if (teamId !== 'men' && teamId !== 'women') teamId = 'men';
+    document.body.setAttribute('data-active-team', teamId);
+    document.querySelectorAll('.switch-btn').forEach(b => {
+      const active = b.dataset.teamTarget === teamId;
+      b.classList.toggle('active', active);
+      b.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    try { localStorage.setItem(TEAM_KEY, teamId); } catch (e) {}
+    closeAllTournamentMenus();
+    if (!$('tournamentModal').hidden) closeTournamentModal();
+  }
+  document.querySelectorAll('.switch-btn').forEach(b => {
+    b.addEventListener('click', () => setActiveTeam(b.dataset.teamTarget));
+  });
+  let savedTeam = 'men';
+  try { savedTeam = localStorage.getItem(TEAM_KEY) || 'men'; } catch (e) {}
+  setActiveTeam(savedTeam);
+</script>
